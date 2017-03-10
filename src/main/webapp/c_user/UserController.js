@@ -6,7 +6,7 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 								$cookieStore,$http) {
 							console.log("UserController...")
 							var self = this;
-							this.user = {userId : '',username : '', password : '',	mobileno : '',
+							this.user = {userId : '',username : '', password : '',	mobile : '',
 								city : '', mailid : '',isOnline : '',	role : '',
 								errorCode : '',	errorMessage : '' , imageUrl:''
 							};
@@ -185,7 +185,7 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 
 							};
 
-							self.submit = function() {
+							self.submit = function(user) {
 								{
 									console.log('Saving New User', self.user);
 									self.createUser(self.user);

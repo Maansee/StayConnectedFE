@@ -2,141 +2,81 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Register Here:</title>
 </head>
-<body>
+<body ng-app="myApp">
+<script src="resources/js/bootstrap.js"></script>
 
-	<div class="generic-container" ng-controller="UserController as ctrl">
-
-
-	<!-- 	<div ng-hide='ctrl.user.errorMessage=="" '> -->
-			<div class="alert alert-danger fade in">
-
-				{{ctrl.user.errorMessage}}
-			</div>
-
-	<!-- 	</div> -->
-
-
-		<div ng-show='ctrl.user.errorMessage=="" '>
-
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span class="lead">User Registration Form </span>
-				</div>
-				<div class="formcontainer">
-					<form ng-submit="ctrl.submit()" name="myForm"
-						class="form-horizontal">
-
-						<label>Register As..</label>
-						<div class="container">
-							<div class="radio">
-								<label class="radio-inline"> <input type="radio"
-									name="role" value="student" ng-model="ctrl.user.role">
-									Student
-								</label> <label class="radio-inline"> <input type="radio"
-									name="role" value="alumni" ng-model="ctrl.user.role">
-									Alumni
-								</label> <label class="radio-inline"> <input type="radio"
-									name="role" value="employee" ng-model="ctrl.user.role">
-									Employee
-								</label>
-							</div>
-
-
-						</div>
-
-<!-- 
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="id">ID</label>
-								<div class="col-md-7">
-									<input type="text" ng-model="ctrl.user.userId" id="id"
-										class="userid form-control input-sm"
-										placeholder="Enter your ID" required ng-minlength="3" />
-								</div>
-							</div>
-						</div> -->
-
-
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="username">Name</label>
-								<div class="col-md-7">
-									<input type="text" ng-model="ctrl.user.username" id="name"
-										class="username form-control input-sm"
-										placeholder="Enter your name" required ng-minlength="3" />
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="password">Password</label>
-								<div class="col-md-7">
-									<input type="password" ng-model="ctrl.user.password"
-										id="password" class="username form-control input-sm"
-										placeholder="Enter your password" required ng-minlength="3" />
-								</div>
-							</div>
-						</div>
-
-
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="mailid">Email</label>
-								<div class="col-md-7">
-									<input type="email" ng-model="ctrl.user.mailid" id="mailid"
-										class="email form-control input-sm"
-										placeholder="Enter your Email" required />
-
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="mobileno">Mobile</label>
-								<div class="col-md-7">
-									<input type="tel" ng-model="ctrl.user.mobileno" id="mobileno"
-										class="mobile form-control input-sm"
-										placeholder="Enter your contact number" required />
-
-								</div>
-							</div>
-						</div>
-
-
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="city">City</label>
-								<div class="col-md-7">
-									<input type="text" width="100" height="50"
-										ng-model="ctrl.user.city" id="city"
-										class="form-control input-sm"
-										placeholder="Enter your City." />
-								</div>
-							</div>
-						</div>
-
-
-
-						<div class="row">
-							<div class="form-actions floatRight">
-								<input type="submit" value="Register"
-									class="btn btn-primary btn-sm">
-								<button type="button" ng-click="ctrl.reset()"
-									class="btn btn-warning btn-sm">Reset Form</button>
-							</div>
-						</div>
-					</form>
+<div class="container" ng-controller="UserProfileController as ctrl" style="top: 30%;">
+		<br/><br/><br/>
+		<form class="form-horizontal" name="myForm" role="form" ng-submit="ctrl.submit()">
+			<div class="form-group" ng-class="{'has-error': form.username.$dirty && form.username.$error.required}">
+				<label for="username" class="col-sm-3 control-label" style="text-align: right;">Name:</label>
+				<div class="col-sm-6">
+					<input type="text" name="username" id="username" class="form-control" placeholder="Name"
+						ng-model="ctrl.user.username" required />
+						<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block"></span>
 				</div>
 			</div>
-
-		</div>
+			
+			<div class="form-group" ng-class="{'has-error': form.city.$dirty && form.city.$error.required}">
+				<label for="city" class="col-sm-3 control-label" style="text-align: right;">City/Town:</label> 
+				<div class="col-sm-6">
+					<input type="text" name="city" id="city" class="form-control" ng-model="ctrl.user.city" required 
+						placeholder="City/Town"/>
+					<span ng-show="form.city.$dirty && form.city.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.mobile.$dirty && form.mobile.$error.required}">
+				<label for="mobile" class="col-sm-3 control-label" style="text-align: right;">Mobile :</label> 
+				<div class="col-sm-6">
+					<input type="text" name="mobile" id="mobile" class="form-control" ng-model="ctrl.user.mobile" required 
+						placeholder="mobile number"/>
+					<span ng-show="form.mobile.$dirty && form.mobile.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-6">
+					<label for="gender" style="text-align: right;">Gender :</label>
+					<label  class="radio-inline">
+                    	<input type="radio" name="gender" value="Male" ng-model="ctrl.user.gender" checked="checked">Male
+                    </label>
+					<label  class="radio-inline">
+                    	<input type="radio" name="gender" value="Female" ng-model="ctrl.user.gender">Female
+                    </label>
+                   </div>
+			</div>
+			<div class="form-group">
+				<label for="useridentity" class="col-sm-3 control-label" style="text-align: right;">Registered as :</label> 
+				<div class="col-sm-6">
+					<label  class="radio-inline">
+                    	<input type="radio" name="useridentity" value="Student" ng-model="ctrl.user.userrole" checked="checked">Student
+                    </label>
+					<label  class="radio-inline">
+                    	<input type="radio" name="useridentity" value="Admin" ng-model="ctrl.user.userrole">Alumini
+                    </label>
+					<label  class="radio-inline">
+                    	<input type="radio" name="useridentity" value="Extermal" ng-model="ctrl.user.userrole">External
+                    </label>
+                </div>
+			</div>			
+			<div class="form-group" ng-class="{'has-error': form.password.$dirty && form.password.$error.required}">
+				<label for="password" class="col-sm-3 control-label" style="text-align: right;">Password:</label> 
+				<div class="col-sm-6">
+					<input type="password" name="password" id="password" class="form-control" ng-model="ctrl.user.password" required 
+						placeholder="Password"/>
+					<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+					<button type="submit" ng-disabled="form$invalid || ctrl.dataLoading" class="btn btn-info">Register</button>
+					<button type="reset" class="btn btn-danger" ng-click="ctrl.reset()" >Reset</button>
+				</div>
+			</div>
+		</form>
 	</div>
-
-
-
 </body>
 </html>
